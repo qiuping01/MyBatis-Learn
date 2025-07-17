@@ -4,10 +4,7 @@ import com.test.entity.Class;
 import com.test.entity.Customer;
 import com.test.entity.Goods;
 import com.test.entity.User;
-import com.test.repository.ClassRepository;
-import com.test.repository.CustomerRepository;
-import com.test.repository.StudentRepository;
-import com.test.repository.UserRepository;
+import com.test.repository.*;
 import com.test.util.ParameterPOJO;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -27,13 +24,13 @@ public class Test {
         //获取SqlSession
         SqlSession sqlSession = sqlSessionFactory.openSession();
         //获取实现接口的代理对象
-        CustomerRepository customerRepository = sqlSession.getMapper(CustomerRepository.class);
-        Customer customer = customerRepository.getById(1);
-        System.out.println("客户ID：" + customer.getId());
-        System.out.println("客户姓名：" + customer.getName());
-        List<Goods> goods = customer.getGoods();
-        for (Goods good : goods) {
-            System.out.println("购买的商品：" + good.getId()+good.getName());
+        GoodsRepository goodsRepository = sqlSession.getMapper(GoodsRepository.class);
+        Goods goods = goodsRepository.getById(3);
+        System.out.println("商品ID：" +goods.getId());
+        System.out.println("商品名称：" + goods.getName());
+        List<Customer> customers = goods.getCustomers();
+        for (Customer customer : customers) {
+            System.out.println("客户信息：" + customer.getId() + "-" + customer.getName());
         }
     }
 }

@@ -24,5 +24,6 @@
         <mapper resource="com/test/repository/StudentRepository.xml"></mapper>
         <mapper resource="com/test/repository/ClassRepository.xml"></mapper>
         <mapper resource="com/test/repository/CustomerRepository.xml"></mapper>
+        <mapper resource="com/test/repository/GoodsRepository.xml"></mapper>
     </mappers>
 </configuration>
