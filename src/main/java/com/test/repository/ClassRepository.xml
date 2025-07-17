@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace就是命名空间,把文件位置写出来就行 -->
+<mapper namespace="com.test.repository.ClassRepository">
+    <!--自定义SQL-->
+
+    <resultMap id="clazzMap" type="com.test.entity.Class">
+        <id property="id" column="cid"></id>
+        <result property="name" column="cname"></result>
+        <collection property="student"
+                    ofType="com.test.entity.Student">
+            <id property="id" column="sid"></id>
+            <result property="name" column="sname"></result>
+        </collection>
+    </resultMap>
+    <select id="getById" parameterType="java.lang.Integer"
+            resultMap="clazzMap">
+        select c.id cid, c.name cname, s.name sname, s.id sid
+        from student s,
+             class c
+        where c.id = s.cid
+          and c.id = #{id};
+    </select>
+
+</mapper>
