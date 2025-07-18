@@ -21,6 +21,9 @@ public class Test {
         ClassRepository repository = sqlSession.getMapper(ClassRepository.class);
         Class aClass = repository.findByClaId(1);
         System.out.println(aClass);
+        sqlSession.close();
+        sqlSession =  sqlSessionFactory.openSession();// 重新获取一次
+        repository = sqlSession.getMapper(ClassRepository.class);
         Class aClass1 = repository.findByClaId(1);
         System.out.println(aClass1);
     }
