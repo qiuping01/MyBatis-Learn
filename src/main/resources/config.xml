@@ -7,6 +7,8 @@
         <setting name="logImpl" value="STDOUT_LOGGING"/>
         <!-- 开启延迟加载 -->
         <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 开启二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <!-- MyBatis运行环境 -->

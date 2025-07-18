@@ -23,6 +23,8 @@
           and c.id = #{id};
     </select>
 
+    <cache></cache>
+
     <select id="findByClaId" parameterType="java.lang.Integer"
             resultType="com.test.entity.Class">
         select * from class where id = #{id}

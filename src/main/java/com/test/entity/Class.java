@@ -1,8 +1,9 @@
 package com.test.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Class {
+public class Class implements Serializable {
     private Integer id;
     private String name;
     private List<Student> student;
