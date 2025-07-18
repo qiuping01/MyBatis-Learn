@@ -5,15 +5,15 @@
 <mapper namespace="com.test.repository.StudentRepository">
     <!--自定义SQL-->
 
-    <resultMap id="studentMap" type="com.test.entity.Student">
-        <id property="id" column="sid"></id>
-        <result property="name" column="sname"></result>
-        <association property="clazz"
-                     javaType="com.test.entity.Class">
-            <id property="id" column="cid"></id>
-            <result property="name" column="cname"></result>
-        </association>
-    </resultMap>
+    <!--    <resultMap id="studentMap" type="com.test.entity.Student">-->
+    <!--        <id property="id" column="sid"></id>-->
+    <!--        <result property="name" column="sname"></result>-->
+    <!--        <association property="clazz"-->
+    <!--                     javaType="com.test.entity.Class">-->
+    <!--            <id property="id" column="cid"></id>-->
+    <!--            <result property="name" column="cname"></result>-->
+    <!--        </association>-->
+    <!--    </resultMap>-->
 
     <select id="getById" parameterType="java.lang.Integer"
             resultMap="studentMap">
@@ -28,7 +28,7 @@
         <id property="id" column="cid"></id>
         <result property="name" column="cname"></result>
         <collection property="student"
-                     ofType="com.test.entity.Student">
+                    ofType="com.test.entity.Student">
             <id property="id" column="sid"></id>
             <result property="name" column="sname"></result>
         </collection>
@@ -40,6 +40,23 @@
              class c
         where c.id = s.cid
           and c.id = #{id};
+    </select>
+
+    <!--延迟加载-->
+    <resultMap id="studentMap" type="com.test.entity.Student">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <association property="clazz" javaType="com.test.entity.Class"
+                     column="cid"
+                     select="com.test.repository.ClassRepository.findByClaId"
+        ></association>
+    </resultMap>
+
+    <select id="findByStuId" parameterType="java.lang.Integer"
+            resultMap="studentMap">
+        select *
+        from student
+        where id = #{id}
     </select>
 
 </mapper>

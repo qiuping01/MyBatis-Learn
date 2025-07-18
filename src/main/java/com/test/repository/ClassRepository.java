@@ -4,4 +4,5 @@ import com.test.entity.Class;
 
 public interface ClassRepository {
     public Class getById(Integer id);
+    public Class findByClaId(Integer id);
 }

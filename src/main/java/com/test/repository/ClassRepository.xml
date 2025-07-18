@@ -23,4 +23,9 @@
           and c.id = #{id};
     </select>
 
+    <select id="findByClaId" parameterType="java.lang.Integer"
+            resultType="com.test.entity.Class">
+        select * from class where id = #{id}
+    </select>
+
 </mapper>

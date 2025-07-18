@@ -3,6 +3,15 @@ package com.test.entity;
 public class Student {
     private Integer id;
     private  String name;
+    private  Class clazz;
+
+    public Class getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(Class clazz) {
+        this.clazz = clazz;
+    }
 
     public Integer getId() {
         return id;
@@ -25,6 +34,7 @@ public class Student {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", clazz=" + clazz +
                 '}';
     }
 }
