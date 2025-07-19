@@ -1,8 +1,7 @@
-package com.test.mapper;
+package com.test;
 
-import com.test.entity.Class;
-import com.test.entity.Student;
-import com.test.repository.*;
+import com.test.entity.User;
+import com.test.repository.UserRepository;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -18,13 +17,13 @@ public class Test {
         //获取SqlSession
         SqlSession sqlSession = sqlSessionFactory.openSession();
         //获取实现接口的代理对象
-        ClassRepository repository = sqlSession.getMapper(ClassRepository.class);
-        Class aClass = repository.findByClaId(1);
-        System.out.println(aClass);
-        sqlSession.close();
-        sqlSession =  sqlSessionFactory.openSession();// 重新获取一次
-        repository = sqlSession.getMapper(ClassRepository.class);
-        Class aClass1 = repository.findByClaId(1);
-        System.out.println(aClass1);
+        UserRepository repository = sqlSession.getMapper(UserRepository.class);
+        User user = new User();
+        user.setId(1);
+        //user.setUsername("张三");
+        //user.setPassword("123");
+        user.setAge(22);
+        User user1  =repository.get(user);
+        System.out.println(user1);
     }
 }
