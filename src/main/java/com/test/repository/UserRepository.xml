@@ -40,4 +40,16 @@
         </set>
         where id = #{id}
     </update>
+
+    <select id="getByIds" parameterType="java.lang.Integer"
+            resultType="com.test.entity.User">
+        select * from user
+        <!--遍历ids-->
+        <where>
+            <foreach collection="ids" item="id" open="id in (" close=")"
+                     separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </select>
 </mapper>

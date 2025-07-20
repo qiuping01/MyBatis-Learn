@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,11 +23,11 @@ public class Test {
         //获取实现接口的代理对象
         UserRepository repository = sqlSession.getMapper(UserRepository.class);
         User user = new User();
-        user.setId(6);
-        user.setUsername("小张");
-        //user.setPassword("abc");
-        //user.setAge(33);
-        System.out.println(repository.update(user));
-        sqlSession.commit();// 提交事务 持久化到数据库中
+        List<Integer> ids = Arrays.asList(1, 4, 6);
+        user.setIds(ids);
+        List<User> list = repository.getByIds(user);
+        for(User user1 : list){
+            System.out.println(user1);
+        }
     }
 }
