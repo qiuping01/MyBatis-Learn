@@ -8,18 +8,20 @@
             resultType="com.test.entity.User">
         select * from user
         <where>
-            <if test="id != null">
-                id = #{id}
-            </if>
-            <if test="username != null">
-                and username = #{username}
-            </if>
-            <if test="password != null">
-                and password = #{password}
-            </if>
-            <if test="age != null">
-                and age = #{age}
-            </if>
+           <choose>
+               <when test="id != null">
+                   id = #{id}
+               </when>
+               <when test="username != null">
+                   and username = #{username}
+               </when>
+               <when test="password != null">
+                   and password = #{password}
+               </when>
+               <when test="age != null">
+                   and age = #{age}
+               </when>
+           </choose>
         </where>
     </select>
 

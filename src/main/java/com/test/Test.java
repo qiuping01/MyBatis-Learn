@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
+import java.util.Collections;
+import java.util.List;
 
 public class Test {
     public static void main(String[] args) {
@@ -19,11 +21,11 @@ public class Test {
         //获取实现接口的代理对象
         UserRepository repository = sqlSession.getMapper(UserRepository.class);
         User user = new User();
-        user.setId(1);
-        //user.setUsername("张三");
+        //user.setId(1);
+        user.setUsername("张三");
         user.setPassword("123");
         user.setAge(22);
-        User user1  =repository.get(user);
+        User user1  = repository.get(user);
         System.out.println(user1);
     }
 }
