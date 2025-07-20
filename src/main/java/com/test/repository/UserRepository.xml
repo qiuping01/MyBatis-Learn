@@ -6,20 +6,21 @@
     <!--自定义SQL-->
     <select id="get" parameterType="com.test.entity.User"
             resultType="com.test.entity.User">
-        select * from user where
-        <if test="id != null">
-            id = #{id}
-        </if>
-        <if test="username != null">
-            and username = #{username}
-        </if>
-        <if test="password != null">
-            and password = #{password}
-        </if>
-        <if test="age != null">
-            and age = #{age}
-        </if>
-
+        select * from user
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="username != null">
+                and username = #{username}
+            </if>
+            <if test="password != null">
+                and password = #{password}
+            </if>
+            <if test="age != null">
+                and age = #{age}
+            </if>
+        </where>
     </select>
 
 

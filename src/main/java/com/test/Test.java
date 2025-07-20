@@ -21,7 +21,7 @@ public class Test {
         User user = new User();
         user.setId(1);
         //user.setUsername("张三");
-        //user.setPassword("123");
+        user.setPassword("123");
         user.setAge(22);
         User user1  =repository.get(user);
         System.out.println(user1);
