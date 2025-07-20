@@ -8,22 +8,36 @@
             resultType="com.test.entity.User">
         select * from user
         <where>
-           <choose>
-               <when test="id != null">
-                   id = #{id}
-               </when>
-               <when test="username != null">
-                   and username = #{username}
-               </when>
-               <when test="password != null">
-                   and password = #{password}
-               </when>
-               <when test="age != null">
-                   and age = #{age}
-               </when>
-           </choose>
+            <choose>
+                <when test="id != null">
+                    id = #{id}
+                </when>
+                <when test="username != null">
+                    and username = #{username}
+                </when>
+                <when test="password != null">
+                    and password = #{password}
+                </when>
+                <when test="age != null">
+                    and age = #{age}
+                </when>
+            </choose>
         </where>
     </select>
 
-
+    <update id="update" parameterType="com.test.entity.User">
+        update user
+        <set>
+            <if test="username !=null">
+                username = #{username},
+            </if>
+            <if test="password !=null">
+                password = #{password},
+            </if>
+            <if test="age !=null">
+                age = #{age},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 </mapper>

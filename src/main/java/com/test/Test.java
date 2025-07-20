@@ -21,11 +21,11 @@ public class Test {
         //获取实现接口的代理对象
         UserRepository repository = sqlSession.getMapper(UserRepository.class);
         User user = new User();
-        //user.setId(1);
-        user.setUsername("张三");
-        user.setPassword("123");
-        user.setAge(22);
-        User user1  = repository.get(user);
-        System.out.println(user1);
+        user.setId(6);
+        user.setUsername("小张");
+        //user.setPassword("abc");
+        //user.setAge(33);
+        System.out.println(repository.update(user));
+        sqlSession.commit();// 提交事务 持久化到数据库中
     }
 }
