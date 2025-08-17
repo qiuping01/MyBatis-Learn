@@ -6,7 +6,7 @@
 
 ORM：Object Relationship Mapping 对象关系映射，可以理解为Java对象和数据库数据的映射，类和表的映射
 
-<img src="C:/Users/21877/Desktop/image-20250710153651565.png" alt="image-20250710153651565" style="zoom:50%;" />
+<img src="https://cdn.nlark.com/yuque/0/2025/png/57681281/1755425249506-e82bcafc-4a5d-4798-a751-03868451a7e2.png?x-oss-process=image%2Fformat%2Cwebp" alt="image-20250710153651565" style="zoom:50%;" />
 
 上面是我的user表，相当于把我的类跟表映射起来了。把数据表中的一行数据封装成Java对象，所以我们可以通过Java去查。这就是ORM框架做的事情，可以说是把数据库表的行数据映射为Java对象，也可以说是把一个Java对象映射成了数据库表数据。
 
@@ -1193,3 +1193,4 @@ MyBatis 是一个半自动化的 ORM 框架，每次操作都需要在 Mapper.xm
 基于springboot框架，不用引入依赖，springboot自动整合构建环境。
 
 spring框架，springboot框架，springcloud框架。
+
